@@ -3,8 +3,11 @@ import React from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { schema } from "./schema";
 import { TextField } from "../../../components";
-import { Link } from "react-router";
-
+import { Link, useNavigate } from "react-router";
+import { Api } from "../../../services/ApiService";
+import { setItem } from "../../../utils";
+import { LOCAL_KEYS } from "../../../constants/local-keys";
+import { useAuth } from "../../../context";
 interface FormData {
   username: string;
   email: string;
@@ -22,6 +25,8 @@ const Form: React.FC<FormProps> = ({
   secondaryButtonRedirect,
   secondaryButtonText,
 }: FormProps) => {
+  const navigate = useNavigate();
+  const { login } = useAuth();
   const {
     handleSubmit,
     control,
@@ -32,7 +37,16 @@ const Form: React.FC<FormProps> = ({
     mode: "onBlur",
   });
 
-  const onSubmit: SubmitHandler<FormData> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
+    const response = await Api.register(data);
+    if (response.status === 200) {
+      setItem(LOCAL_KEYS.ACCESS_TOKEN, JSON.stringify(response?.data?.token));
+      navigate("/verify-otp");
+    } else {
+      alert("do not know what happened");
+      console.log(response)
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-1">

@@ -6,6 +6,8 @@ import { TextField } from "../../../components";
 import { getItem, setItem } from "../../../utils";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../../context";
+import { LOCAL_KEYS } from "../../../constants/local-keys";
+import { Api } from "../../../services/ApiService";
 
 interface FormData {
   otp: string;
@@ -16,8 +18,8 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ buttonText }: FormProps) => {
-  const navigate = useNavigate();
   const { login } = useAuth();
+  const navigate = useNavigate();
   const {
     handleSubmit,
     control,
@@ -28,11 +30,18 @@ const Form: React.FC<FormProps> = ({ buttonText }: FormProps) => {
     mode: "onBlur",
   });
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-    setItem("isLoggedIn", JSON.stringify(true));
-    login();
-    return navigate("/");
+  const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
+    const response = await Api.verifyOtp(data);
+    if (response.status === 200) {
+      setItem(LOCAL_KEYS.IS_LOGGED_IN, JSON.stringify(true));
+      login();
+      navigate("/");
+    } else {
+      alert("do not know what happened");
+      console.log(response);
+    }
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-1">
       <Controller

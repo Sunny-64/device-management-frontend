@@ -1,6 +1,7 @@
 import { Card } from "../../components";
 
 const Home = () => {
+  
   return (
     <div className="p-4 md:px-6">
       <p className="font-bold text-lg my-4">Activity Logs</p>

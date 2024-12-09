@@ -1,9 +1,9 @@
 import z from "zod";
 
 export const schema = z.object({
-  usernameOrEmail: z.string({
-    required_error: "Email is required",
-  }),
+  email: z.string({
+    required_error: "Email or Username is required",
+  }).email("Invalid email"),
   password: z
     .string({
       required_error: "Password is required",
