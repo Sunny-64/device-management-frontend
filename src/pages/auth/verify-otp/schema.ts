@@ -5,5 +5,5 @@ export const schema = z.object({
     .string({
       required_error: "Password is required",
     })
-    .length(6, "OTP must be 6 characters"),
+    .length(6, "OTP must be 6 digits"),
 });

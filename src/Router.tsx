@@ -1,14 +1,13 @@
-import { Routes, Route, useNavigate } from "react-router";
+import { Routes, Route } from "react-router";
 import { AuthLayout, Signin, Signup, VerifyOtp, Layout, Home } from "./pages";
-import { getItem } from "./utils";
-import { useEffect } from "react";
+import { useAuth } from "./context";
 
 const Router = () => {
-  const isLoggedIn = getItem('isLoggedIn');
+  const { isAuthenticated } = useAuth();
 
   return (
     <Routes>
-      {isLoggedIn ? (
+      {isAuthenticated ? (
         <>
           <Route path="/" element={<Layout />}>
             <Route path="/" element={<Home />} />

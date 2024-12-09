@@ -1,9 +1,6 @@
-import phone from './phone.jpeg'
-import laptop from './laptop.jpeg'
-import authImg from './auth.svg'
+import phone from "./phone.jpeg";
+import laptop from "./laptop.jpeg";
+import authImg from "./auth.svg";
 
-export {
-    phone, 
-    laptop, 
-    authImg
-}
+export { phone, laptop, authImg };
+export { default as LogoutSvg } from "./LogoutSvg";

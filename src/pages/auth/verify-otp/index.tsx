@@ -1,9 +1,16 @@
-import React from 'react'
+import Form from "./Form";
 
 const VerifyOtp = () => {
   return (
-    <div>VerifyOtp</div>
-  )
-}
+    <div className="w-full text-center mt-4 lg:w-2/3 xl:1/2 md:bg-white lg:shadow-md lg:rounded-md lg:py-10 lg:px-4 xl: px-10">
+      <p className="font-bold text-xl mb-4">Welcome to Device Manager!!</p>
+      <div className="p-2">
+        <Form
+          buttonText="Verify"
+        />
+      </div>
+    </div>
+  );
+};
 
-export default VerifyOtp
+export default VerifyOtp;

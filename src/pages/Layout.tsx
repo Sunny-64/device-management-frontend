@@ -3,9 +3,11 @@ import { Outlet } from "react-router";
 
 const Layout: React.FC = () => {
   return (
-    <div>
+    <div className="bg-light min-h-screen">
       <Navbar />
-      <Outlet />
+      <div className="p-2">
+        <Outlet />
+      </div>
     </div>
   );
 };
