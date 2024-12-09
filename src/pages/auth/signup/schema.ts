@@ -5,7 +5,7 @@ export const schema = z.object({
     .string({
       required_error: "Username is required",
     })
-    .min(6, "Password must be at least 6 characters long"),
+    .min(6, "Username must be at least 6 characters long"),
   email: z
     .string({
       required_error: "Email is required",
