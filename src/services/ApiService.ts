@@ -9,6 +9,8 @@ const getHeaders = () => ({
     'authorization': `Bearer ${getItem(LOCAL_KEYS.ACCESS_TOKEN)}`
 });
 
+console.log(getHeaders())
+
 class ApiService {
     register(data: any) {
         return axios.post(`${BASE_URL}/auth/register`, data, { headers: getHeaders() });
@@ -26,12 +28,16 @@ class ApiService {
         return axios.get(`${BASE_URL}/user/active-devices`, { headers: getHeaders() });
     }
 
-    removeDevice(id: string) {
-        return axios.delete(`${BASE_URL}/revoke-access/${id}`, { headers: getHeaders() });
+    removeDevice(tokenId: string) {
+        return axios.delete(`${BASE_URL}/user/revoke-access/${tokenId}`, { headers: getHeaders() });
     }
 
     logout() {
-        return axios.delete(`${BASE_URL}/user/logout`, { headers: getHeaders() });
+        return axios.post(`${BASE_URL}/user/logout`, {}, { headers: getHeaders() });
+    }
+
+    getUsername() {
+        return axios.get(`${BASE_URL}/user`, { headers: getHeaders() });
     }
 }
 

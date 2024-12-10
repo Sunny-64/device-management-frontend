@@ -81,14 +81,14 @@ const Form: React.FC<FormProps> = ({
         )}
       />
       <button
-        className="bg-accent py-2 rounded-md text-white mb-2 mt-4"
+        className="bg-accent py-2 rounded-md text-white mb-2 mt-4 hover:opacity-70"
         type="submit"
       >
         {buttonText}
       </button>
       {secondaryButtonText && (
         <Link
-          className="py-2 bg-secondary-light rounded-md"
+          className="py-2 bg-secondary-light rounded-md hover:opacity-70"
           to={`/${secondaryButtonRedirect}` || "#"}
         >
           {secondaryButtonText}
