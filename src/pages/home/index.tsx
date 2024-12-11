@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Card } from "../../components";
 import { QUERY_KEYS } from "../../constants";
 import { Api } from "../../services/ApiService";

@@ -7,7 +7,6 @@ import { Link, useNavigate } from "react-router";
 import { LOCAL_KEYS } from "../../../constants/local-keys";
 import { Api } from "../../../services/ApiService";
 import { setItem } from "../../../utils";
-import { useAuth } from "../../../context";
 
 interface FormData {
   email: string;

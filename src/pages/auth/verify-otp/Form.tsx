@@ -3,7 +3,7 @@ import React from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { schema } from "./schema";
 import { TextField } from "../../../components";
-import { getItem, setItem } from "../../../utils";
+import { setItem } from "../../../utils";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../../context";
 import { LOCAL_KEYS } from "../../../constants/local-keys";

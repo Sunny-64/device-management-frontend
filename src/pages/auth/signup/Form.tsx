@@ -7,7 +7,6 @@ import { Link, useNavigate } from "react-router";
 import { Api } from "../../../services/ApiService";
 import { setItem } from "../../../utils";
 import { LOCAL_KEYS } from "../../../constants/local-keys";
-import { useAuth } from "../../../context";
 interface FormData {
   username: string;
   email: string;
@@ -26,7 +25,6 @@ const Form: React.FC<FormProps> = ({
   secondaryButtonText,
 }: FormProps) => {
   const navigate = useNavigate();
-  const { login } = useAuth();
   const {
     handleSubmit,
     control,
