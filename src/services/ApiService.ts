@@ -2,7 +2,7 @@ import axios from "axios"
 import { getItem } from "../utils";
 import { LOCAL_KEYS } from "../constants/local-keys";
 
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = 'https://clownfish-app-m5g7p.ondigitalocean.app'
 
 const getHeaders = () => ({
     'content-type': 'Application/json', 
